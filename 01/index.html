@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://unpkg.com/d3@4"></script>
+  <script src="https://unpkg.com/d3-component@2.2"></script>
+  <style>
+    #container{
+      margin: 20px;
+      padding: 20px;
+      border-radius: 5px;
+      border: 1px solid lightgray;
+    }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+  <script>
+    var heading = d3.component("h1")
+          .render(function (d){
+            d3.select(this).text(d);
+          }),
+        paragraph = d3.component("p")
+          .render(function (d){
+            d3.select(this).text(d);
+          }),
+        post = d3.component("div")
+          .render(function (d){
+            d3.select(this)
+              .call(heading, d.title)
+              .call(paragraph, d.content);
+          });
+
+    d3.select("#container").call(post, [
+      {
+        title: "The First Post",
+        content: "Lorem ipsum dolor sit amet, et verear moderatius usu. Quando percipit menandri te mea, no pri semper omittam. At docendi facilisi indoctum pri. Simul vidisse dolores mei an, in pri insolens scripserit, tale iudico oporteat pro an. Ea decore epicuri partiendo est."
+      },
+      {
+        title: "The Second Post",
+        content: "Id nam unum iracundia reprimique, mel id probo constituam adversarium, elitr epicurei interesset ad usu. Iudicabit scriptorem ex pri, cu quis forensibus appellantur nam, usu ad putant assentior. Ea tamquam detraxit has, mei cu nostro expetendis moderatius. In inani dictas mei, per ut noster voluptatibus, vix ut nostro omnium."
+      },
+      {
+        title: "The Third Post",
+        content: "Mea te labore praesent, pro an democritum adolescens vituperata. Eum paulo sapientem theophrastus cu, at prima explicari qui, legere molestiae incorrupte at pro. Ei soluta docendi pro, te sea mentitum sensibus, eu vix solum nihil iudicabit. Vis ferri augue molestiae ei, eu veritus tacimates quo. Ex mel atomorum maiestatis scripserit. Ut reque justo sensibus pro, his vivendum intellegebat ex, timeam laoreet mei ei."
+      },
+    ]);
+  </script>
+</body>
